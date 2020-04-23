@@ -50,8 +50,7 @@ class ViewController: UIViewController {
             let jsonData = try jsonValue.convertToJsonData()
             try JSONDecoder().decode(FeatureResponse.self, from: jsonData)
             
-            
-            print(RegistredFeatures.programador.available)
+            print(RegistredFeatures.chatbot.available)
         } catch {
             print("error")
         }

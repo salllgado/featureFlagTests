@@ -17,6 +17,12 @@ class FeatureShared: NSObject {
     func addNewFeature(featuring: Feature) {
         if !features.contains(featuring) {
             features.append(featuring)
+        } else {
+            features = features.filter { (feature) -> Bool in
+                feature.key != featuring.key
+            }
+            
+            addNewFeature(featuring: featuring)
         }
     }
     

@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct FeatureResponse: Decodable {
+    let features: [Feature]
+}
+
 struct Feature {
     let key: String
     let explanation: String
@@ -27,6 +31,7 @@ struct Feature {
 }
 
 extension Feature: Decodable {
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         key = try values.decode(String.self, forKey: .key)
@@ -43,8 +48,4 @@ extension Feature: Equatable {
     static func ==(lhs: Feature, rhs: Feature) -> Bool {
         return lhs.key == rhs.key
     }
-}
-
-struct FeatureResponse: Decodable {
-    let features: [Feature]
 }
